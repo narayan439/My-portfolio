@@ -16,11 +16,11 @@ const Projects = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const categories = ['All', 'UI/UX Design', 'Full Stack', 'Mobile', 'Product Design'];
+  const categories = ['all', 'full stack','backend', 'frontend'];
   
   const filteredProjects = filter === 'all' 
     ? projects 
-    : projects.filter(project => project.category === filter);
+    : projects.filter(project => project.category.toLowerCase() === filter);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -42,6 +42,71 @@ const Projects = () => {
         stiffness: 100,
         damping: 12
       }
+    }
+  };
+
+  // Handle View button click
+  const handleViewClick = (project) => {
+    // Priority order for view link:
+    // 1. liveUrl (for portfolio)
+    // 2. links.live (for other projects)
+    // 3. links.web (for projects with web URLs)
+    // 4. links.demo
+    // 5. link (fallback)
+    // 6. githubUrl (for portfolio)
+    // 7. links.github
+    
+    let url = '#';
+    
+    if (project.liveUrl) {
+      url = project.liveUrl; // Portfolio has liveUrl
+    } else if (project.links?.live) {
+      url = project.links.live;
+    } else if (project.links?.web) {
+      url = project.links.web;
+    } else if (project.links?.demo) {
+      url = project.links.demo;
+    } else if (project.link) {
+      url = project.link; // Fallback link
+    } else if (project.githubUrl) {
+      url = project.githubUrl; // Portfolio GitHub
+    } else if (project.links?.github) {
+      url = project.links.github;
+    }
+    
+    if (url !== '#') {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  // Handle GitHub button click
+  const handleGitHubClick = (project) => {
+    // Priority order for GitHub:
+    // 1. githubUrl (portfolio)
+    // 2. links.github
+    // 3. links.figma (for design projects)
+    // 4. Fallback to view URL
+    
+    let url = '#';
+    
+    if (project.githubUrl) {
+      url = project.githubUrl; // Portfolio GitHub
+    } else if (project.links?.github) {
+      url = project.links.github;
+    } else if (project.links?.figma) {
+      url = project.links.figma; // For design projects
+    } else if (project.links?.behance) {
+      url = project.links.behance; // Alternative for design
+    } else if (project.links?.prototype) {
+      url = project.links.prototype; // For prototypes
+    } else if (project.liveUrl) {
+      url = project.liveUrl; // Fallback to live URL
+    } else if (project.links?.live) {
+      url = project.links.live; // Fallback to demo
+    }
+    
+    if (url !== '#') {
+      window.open(url, '_blank', 'noopener,noreferrer');
     }
   };
 
@@ -142,7 +207,7 @@ const Projects = () => {
                 borderBottom: filter === category ? '2px solid #f472b6' : 'none'
               }}
             >
-              {category}
+              {category.charAt(0).toUpperCase() + category.slice(1)}
             </motion.button>
           ))}
         </motion.div>
@@ -252,13 +317,19 @@ const Projects = () => {
                   </div>
                   
                   <motion.a
-                    href={project.link}
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleViewClick(project);
+                    }}
                     whileHover={{ rotate: 45 }}
                     whileTap={{ scale: 0.9 }}
                     style={{ 
                       display: 'inline-block',
                       marginLeft: '0.5rem',
-                      flexShrink: 0
+                      flexShrink: 0,
+                      color: 'var(--primary)',
+                      textDecoration: 'none'
                     }}
                     aria-label={`View ${project.title} details`}
                   >
@@ -307,10 +378,11 @@ const Projects = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => handleViewClick(project)}
                     style={{
                       flex: 1,
                       padding: isMobile ? '0.6rem' : '0.75rem',
-                      background: 'var(--primary)',
+                      background: 'var(--primary-gradient)',
                       color: 'white',
                       border: 'none',
                       borderRadius: '8px',
@@ -324,12 +396,13 @@ const Projects = () => {
                     }}
                   >
                     <Eye size={isMobile ? 16 : 18} />
-                    View Case Study
+                    View
                   </motion.button>
                   
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => handleGitHubClick(project)}
                     style={{
                       padding: isMobile ? '0.6rem 1rem' : '0.75rem 1.5rem',
                       background: 'transparent',

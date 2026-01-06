@@ -2,33 +2,37 @@ export const projects = [
   {
     id: 1,
     title: "Student Result Management System",
-    category: "Full Stack",
-    description: "A full-stack web application for managing and viewing student academic results with secure authentication and role-based access.",
+    category: "full stack",
+    description: "Full-stack web application for managing student academic results with secure authentication and role-based access.",
     image: "https://i.ibb.co/YB8W1p83/Screenshot-2025-12-30-121354.png",
     tags: ["Angular", "Spring Boot", "MySQL", "JWT"],
-    link: "#",
-    featured: true
+    links: {
+      github: "https://github.com/narayan439/student-result-management-system-frontend",
+      web: "https://student-result-management-system-frontend.onrender.com/"
+    }
   },
   {
     id: 2,
     title: "Homy – Sofa Service Booking Platform",
-    category: "Full Stack",
-    description: "A service-booking platform where users can book sofa cleaning and repair services online with email notifications.",
+    category: "full stack",
+    description: "Service booking platform for sofa cleaning and repair with online booking and admin dashboard.",
     image: "https://i.ibb.co/KjVN9jRr/Screenshot-2025-12-30-120955.png",
-    tags: ["Angular", "Spring Boot", "MySQL", "SMTP"],
-    link: "#",
-    featured: true
+    tags: ["Angular", "Spring Boot", "MySQL"],
+    links: {
+      github: "https://github.com/narayan439/homy-sofa-frontend",
+      web: "https://homy-sofa-frontend.onrender.com/"
+    }
   },
   {
-    id: 3,
-    title: "Fitness Hour App",
-    category: "Mobile",
-    description: "A mobile fitness application for tracking workouts, calories, and daily activity with clean mobile-first UI.",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&auto=format&fit=crop",
-    tags: ["React Native", "Firebase"],
-    link: "#",
-    featured: true
-  },
-  
-  
-];
+  id: 3,
+  title: "Skill Exchange Platform",
+  category: "full stack",
+  description:
+    "A MERN-based skill exchange platform where users can offer their skills and learn new skills from others through mutual collaboration without monetary transactions.",
+  image: "https://i.ibb.co/Z1NV67Pj/Screenshot-2025-12-30-204436.png",
+  tags: ["React", "Node.js", "Express.js", "MongoDB"],
+  links: {
+    github: "https://github.com/narayan439/SkillEx",
+    web: "https://skillexchange1.netlify.app/"
+  }
+}];

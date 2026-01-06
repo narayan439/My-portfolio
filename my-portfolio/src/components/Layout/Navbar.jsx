@@ -6,6 +6,17 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
+  // Handle CV Download
+  const handleDownloadCV = () => {
+    const cvPath = '/resume.pdf'; // Place your resume in public folder
+    const link = document.createElement('a');
+    link.href = cvPath;
+    link.download = 'Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   // Optimized scroll handler with throttling
   useEffect(() => {
     let ticking = false;
@@ -81,7 +92,7 @@ const Navbar = () => {
           left: 0,
           right: 0,
           zIndex: 1000,
-          padding: isMobile ? '0.75rem 1rem' : '1rem 2rem',
+          padding: isMobile ? '0.25rem 1rem' : '1rem 2rem',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -105,7 +116,7 @@ const Navbar = () => {
             cursor: 'pointer'
           }}
         >
-          Portfolio
+          Narayan Sahu
         </motion.div>
 
         {/* Desktop Navigation */}
@@ -155,6 +166,7 @@ const Navbar = () => {
             ))}
             
             <motion.button
+              onClick={handleDownloadCV}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="btn btn-primary"
@@ -286,6 +298,7 @@ const Navbar = () => {
               
               <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <motion.button
+                  onClick={handleDownloadCV}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   style={{

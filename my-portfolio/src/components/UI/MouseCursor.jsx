@@ -168,8 +168,7 @@ const MouseCursor = () => {
           borderRadius: '50%',
           opacity: 0,
           transition: 'opacity 0.3s ease',
-          background: 'radial-gradient(circle, rgba(244, 114, 182, 0.1) 0%, transparent 70%)',
-          pointerEvents: 'none'
+          background: 'radial-gradient(circle, rgba(244, 114, 182, 0.1) 0%, transparent 70%)'
         }}
       />
     </>

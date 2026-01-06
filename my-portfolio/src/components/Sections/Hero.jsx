@@ -2,8 +2,11 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, MousePointerClick } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
+
+
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
+
 
   useEffect(() => {
     const checkMobile = () => {
@@ -75,7 +78,7 @@ const Hero = () => {
           >
             <Sparkles size={16} />
             <span style={{ fontSize: '0.9rem', fontWeight: '500' }}>
-              UX/UI Designer & Frontend Developer
+              Full Stack Developer
             </span>
           </motion.div>
 
@@ -120,27 +123,49 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="btn btn-primary"
-              style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
+              onClick={() =>
+                document.getElementById("projects")?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+              style={{
+                marginLeft: '1.5rem',
+                padding: '0.6rem 1.5rem',
+                display: 'flex',
+                alignItems: 'center',
                 gap: '0.5rem',
-                padding: isMobile ? '0.75rem 1.5rem' : '0.8rem 2rem'
+                background: 'linear-gradient(135deg, #818cf8, #f472b6)',
+                border: 'none',
+                color: 'white',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                fontWeight: '600',
+                fontSize: '0.9rem',
+                transition: 'all 0.3s ease'
               }}
             >
               View My Work
               <ArrowRight size={20} />
             </motion.button>
-            
+
+          
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() =>
+                document.getElementById("contact")?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+              
               className="btn btn-secondary"
               style={{
-                padding: isMobile ? '0.75rem 1.5rem' : '0.8rem 2rem'
+              padding: isMobile ? '0.75rem 1.5rem' : '0.8rem 2rem'
               }}
             >
               Contact Me
             </motion.button>
+          
           </motion.div>
 
           {/* Stats - Stack on mobile */}
@@ -155,8 +180,8 @@ const Hero = () => {
             }}
           >
             {[
-              { number: '50+', label: 'Projects' },
-              { number: '3+', label: 'Years Experience' },
+              { number: '5+', label: 'Projects' },
+              { number: '2+', label: 'Years Experience' },
               { number: '100%', label: 'Satisfaction' }
             ].map((stat, index) => (
               <div 

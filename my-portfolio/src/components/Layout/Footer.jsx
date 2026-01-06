@@ -49,7 +49,7 @@ const Footer = () => {
           <motion.div variants={itemVariants}>
             <div style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>
               <span style={{ background: 'linear-gradient(135deg, #818cf8, #f472b6)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
-                Portfolio
+               NS Developer
               </span>
             </div>
             <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '2rem', maxWidth: '300px' }}>
@@ -57,10 +57,10 @@ const Footer = () => {
             </p>
             <div style={{ display: 'flex', gap: '1rem' }}>
               {[
-                { icon: Mail, href: '#' },
-                { icon: Github, href: '#' },
-                { icon: Linkedin, href: '#' },
-                { icon: Twitter, href: '#' }
+                { icon: Mail, href: 'narayansahu2888@gmail.com' },
+                { icon: Github, href: 'https://github.com/narayan439' },
+                { icon: Linkedin, href: 'https://www.linkedin.com/in/narayan-sahu-1752a0393?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' },
+                // { icon: Twitter, href: '#' }
               ].map((social, idx) => (
                 <motion.a
                   key={idx}
@@ -158,7 +158,7 @@ const Footer = () => {
           }}
         >
           <p style={{ color: 'rgba(255,255,255,0.5)' }}>
-            © {currentYear} Your Name. All rights reserved.
+            © {currentYear} NS Developer. All rights reserved.
           </p>
           
           <motion.p
@@ -171,7 +171,7 @@ const Footer = () => {
             animate={{ scale: [1, 1.1, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            Made with <Heart size={16} style={{ color: '#f472b6' }} /> by You
+            Made with <Heart size={16} style={{ color: '#f472b6' }} /> NS Developer
           </motion.p>
         </motion.div>
       </div>
